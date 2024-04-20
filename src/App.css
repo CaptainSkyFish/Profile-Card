@@ -1,0 +1,90 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+span{
+  margin: 15px;
+}
+
+.card {
+  /* flex: 0 0 25%; Makes each card occupy 25% of the container */
+  margin: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  position: relative; /* Needed for hover effect */
+  transition: transform 0.5s ease-in-out; /* Smooth transition */
+}
+
+.card::before {
+  /* content: ""; */
+  position: absolute;
+  /* inset: 0; Stretches to fill the card */
+  border-radius: inherit; /* Matches card border radius */
+}
+
+.card:hover {
+  /* transform: translate(calc(-50% + var(--cursor-x)), calc(-50% + var(--cursor-y))); */
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  scale: 1.2;
+}
+
+.image-container {
+  width: 200px; /* Set your desired width */
+  height: 200px; /* Set your desired height */
+  border-radius: 50%; /* Make the container circular */
+  overflow: hidden; /* Hide overflowing content */
+}
+
+img {
+  width: 100%; /* Image fills the container */
+  height: 100%; /* Image fills the container */
+  object-fit: cover; /* Ensures image fills the circle while maintaining aspect ratio (may crop) */
+}
+
+.card {
+  /* Base styles for the card */
+  position: relative; /* Needed for hover effects */
+  transition: all 0.2s ease-in-out; /* Smooth transition on hover */
+}
+
+.card .image-container {
+  /* Image container styles */
+  overflow: hidden; /* Ensures image doesn't overflow */
+  margin-bottom: 10px; /* Space between image and name */
+}
+
+.card .info {
+  /* Container for follower count, likes, photos */
+  position: absolute;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition on hover */
+  justify-content: space-between; /* Distribute items evenly */
+  /* align-items: center; Vertically center items */
+}
+
+.card:hover .info {
+  /* Reveal info on hover */
+  opacity: 1;
+}
+
+.card .info span:nth-child(odd) {
+  /* Styles for follower count, likes, photos values */
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.card .info span:nth-child(even) {
+  /* Styles for follower count, likes, photos text */
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.card-container {
+  display: flex; /* Enables flexbox layout */
+  scroll-snap-type: x mandatory; /* Enables snapping to cards on scroll */
+  overflow-x: visible;
+  margin: 100px; /* Centers the container horizontally */
+}
